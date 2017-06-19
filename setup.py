@@ -4,7 +4,7 @@ import subprocess
 from setuptools import setup, find_packages
 from setuptools.command.install import install
 
-code = """#!/usr/bin/env python
+pylint_check_code = """#!/usr/bin/env python
 
 import argparse
 import sys
@@ -51,6 +51,12 @@ if __name__ == "__main__":
 """
 
 class GitHookSetup(install):
+    """
+        class GitHookSetup
+        Has a run method which check presence of pre-commit hook of git,
+        if already present removes it, else creates a new one using the content present in 
+        "pylint_check_code" string. Also update the permission of file as required.
+    """
 
     def run(self):
         install.run(self)
@@ -63,7 +69,7 @@ class GitHookSetup(install):
             pass
 
         f = open('.git/hooks/pre-commit', 'w+')
-        f.write(code)
+        f.write(pylint_check_code)
         f.close()
         subprocess.call(['chmod', '0755', '.git/hooks/pre-commit'])
 
