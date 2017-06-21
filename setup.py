@@ -60,7 +60,7 @@ class GitHookSetup(install):
 
     def run(self):
         install.run(self)
-
+        print ('saurabh prakash *****************')
         # Remove if pre-commit hook if exists any
         try:
             os.remove('.git/hooks/pre-commit')
@@ -75,25 +75,15 @@ class GitHookSetup(install):
 
 
 setup(
-    name='git-hooks-for-pylint',
+    name='git-hooks-pylint-django',
     version='0.1',
-    packages=find_packages(),
+    # packages=find_packages(),
     description='Git hooks for pylint, for django projects',
     long_description='Currently adds pre-commit hook to git codebase, which runs pylint over the given django codebase',
-
-    # The project's main homepage.
     url='https://github.com/saurabhprakash/git-hooks-pylint-django',
-
-    # Author details
+    download_url = 'https://codeload.github.com/saurabhprakash/git-hooks-pylint-django/zip/master', 
+    keywords = ['Django', 'pylint'], 
     author='Saurabh',
     author_email='saurabhpresent@gmail.com',
-    # install_requires=[
-    #     'pylint>=1.5',
-    # ],
-    cmdclass={'install': GitHookSetup},
-    # entry_points={
-    #     'console_scripts': [
-    #         'core=core:main',
-    #     ],
-    # },
+    cmdclass={'install': GitHookSetup}
 )
