@@ -1,2 +1,2 @@
-pylint==1.7.4
+pylint==4.0.9
 pylint-django==0.7.2
